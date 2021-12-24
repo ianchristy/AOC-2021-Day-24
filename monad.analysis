@@ -1,0 +1,65 @@
+     monad.alu  seperated out into horizontal sections 
+
+    1     |      2      |      3     |      4     |     5    |
+----------|-------------|------------|------------|----------|-
+inp w     |  inp w      |  inp w     |  inp w     | inp w    |
+mul x 0   |  mul x 0    |  mul x 0   |  mul x 0   | mul x 0  |
+add x z   |  add x z    |  add x z   |  add x z   | add x z  |
+mod x 26  |  mod x 26   |  mod x 26  |  mod x 26  | mod x 26 |
+div z 1   |  div z 1    |  div z 1   |  div z 26  | div z 1  | <== changes
+add x 10  |  add x 13   |  add x 13  |  add x -11 | add x 11 | <== changes
+eql x w   |  eql x w    |  eql x w   |  eql x w   | eql x w  |
+eql x 0   |  eql x 0    |  eql x 0   |  eql x 0   | eql x 0  |
+mul y 0   |  mul y 0    |  mul y 0   |  mul y 0   | mul y 0  |
+add y 25  |  add y 25   |  add y 25  |  add y 25  | add y 25 |
+mul y x   |  mul y x    |  mul y x   |  mul y x   | mul y x  |
+add y 1   |  add y 1    |  add y 1   |  add y 1   | add y 1  |
+mul z y   |  mul z y    |  mul z y   |  mul z y   | mul z y  |
+mul y 0   |  mul y 0    |  mul y 0   |  mul y 0   | mul y 0  |
+add y w   |  add y w    |  add y w   |  add y w   | mul y w  |
+add y 13  |  add y 10   |  add y 3   |  add y 1   | add y 9  | <== changes
+mul y x   |  mul y x    |  mul y x   |  mul y x   | mul y x  |
+add z y   |  add z y    |  add z y   |  add z y   | add z y  |
+
+   7*26=182    div z 26  <-- happens 7 times
+
+x and y are red-herrings  w=number entered
+
+
+
+----------  first part of ALU ---------------------
+Start : Fri Dec 24 15:42:59 2021
+[1]  ALU returns x=1 y=14  z=14  a=0 b=0  w=1
+[2]  ALU returns x=1 y=15  z=379  a=0 b=0  w=2
+[3]  ALU returns x=1 y=16  z=9870  a=0 b=0  w=3
+[4]  ALU returns x=1 y=17  z=256637  a=0 b=0  w=4
+[5]  ALU returns x=1 y=18  z=6672580  a=0 b=0  w=5
+[6]  ALU returns x=1 y=19  z=173487099  a=0 b=0  w=6
+[7]  ALU returns x=1 y=20  z=4510664594  a=0 b=0  w=7
+[8]  ALU returns x=1 y=21  z=117277279465  a=0 b=0  w=8
+[9]  ALU returns x=1 y=22  z=3049209266112  a=0 b=0  w=9
+
+----------  first and second parts of ALU  ----------------------
+Start : Fri Dec 24 15:47:08 2021
+[11]  ALU returns x=1 y=21  z=645  a=0 b=0  w=11
+[12]  ALU returns x=1 y=22  z=436692  a=0 b=0  w=12
+[13]  ALU returns x=0 y=0  z=11354018  a=0 b=0  w=13
+[14]  ALU returns x=0 y=0  z=295204495  a=0 b=0  w=14
+[15]  ALU returns x=0 y=0  z=7675316898  a=0 b=0  w=15
+[16]  ALU returns x=0 y=0  z=199558239377  a=0 b=0  w=16
+[17]  ALU returns x=0 y=0  z=5188514223832  a=0 b=0  w=17
+[18]  ALU returns x=0 y=0  z=134901369819663  a=0 b=0  w=18
+[19]  ALU returns x=0 y=0  z=3507435615311270  a=0 b=0  w=19
+
+----------  first, second and third parts of ALU ---------------------
+Start : Fri Dec 24 15:53:00 2021
+[111]  ALU returns x=1 y=114  z=87084  a=0 b=0  w=111
+[112]  ALU returns x=1 y=115  z=1530676171  a=0 b=0  w=112
+[113]  ALU returns x=1 y=116  z=26903164469986  a=0 b=0  w=113
+[114]  ALU returns x=1 y=117  z=472850018724563129  a=0 b=0  w=114
+[115]  ALU returns x=1 y=118  z=8310811929102921645200  a=0 b=0  w=115
+[116]  ALU returns x=1 y=119  z=146070830465912950836125799  a=0 b=0  w=116
+[117]  ALU returns x=1 y=120  z=2567340916268886023895747134526  a=0 b=0  w=117
+[118]  ALU returns x=1 y=121  z=45123583944341940755991651636520981  a=0 b=0  w=118
+[119]  ALU returns x=1 y=122  z=793092111405753950727309269163492854764  a=0 b=0  w=119
+
